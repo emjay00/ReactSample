@@ -40,12 +40,13 @@ const ExpenseForm = (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
+
         const expenseData = {
             title: enteredTitle,
             amount: enteredAmount,
             date: new Date(enteredDate)
         };
-        props.onSaveExpenseData();
+        props.onSaveExpenseData(expenseData);
 
         setEnteredTitle(" ");
         setEnteredAmount(" ");
@@ -56,27 +57,27 @@ const ExpenseForm = (props) => {
         <div className='new-expense__controls'>
             <div className='new-expense__control'>
                 <label>Title</label>
-                <input 
-                type="text" 
-                value={enteredTitle} 
-                onChange={titleChangeHandler} />
+                <input
+                    type="text"
+                    value={enteredTitle}
+                    onChange={titleChangeHandler} />
             </div></div>
         <div className='new-expense__controls'>
             <div className='new-expense__control'>
                 <label>Amount</label>
-                <input 
-                value={enteredAmount} 
-                type='number' min="0.01" step="0.01" 
-                onChange={amountChangeHandler} />
+                <input
+                    value={enteredAmount}
+                    type='number' min="0.01" step="0.01"
+                    onChange={amountChangeHandler} />
             </div></div>
         <div className='new-expense__controls'>
             <div className='new-expense__control'>
                 <label>Date</label>
-                <input 
-                value={enteredDate} 
-                type="date" 
-                min="2019-01-01" max="2022-12-31" 
-                onChange={dateChangeHandler} />
+                <input
+                    value={enteredDate}
+                    type="date"
+                    min="2019-01-01" max="2022-12-31"
+                    onChange={dateChangeHandler} />
             </div></div>
         <div className='new-expense__actions'>
             <button type="submit">Add expense</button>
